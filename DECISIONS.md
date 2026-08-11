@@ -30,3 +30,14 @@
 **Outcome:** applied
 **Ref:** (pending)
 **Supersedes:** 2026-08-11T14:43:10-07:00 — user reversed the agent's word choice
+
+## Q4 — interactive/entry-format — deviation
+
+**Question:** What identifier heads each journal entry?
+**Options considered:** ISO-8601 timestamp (v1.1.0 format) / sequential question number (`Q1`, `Q12`, `Q13`)
+**Chosen:** Sequential question numbers: `## Q<n> — <context> — <category>`, with `Supersedes:` citing the prior entry's Q-number; the date moves to version-control history.
+**Decided-by:** human
+**Justification:** User directed the change; Q-numbers are shorter to write and cite in `Supersedes:` lines and handoff summaries than timestamps, and the timing stays recoverable via blame.
+**Outcome:** applied
+**Ref:** (pending)
+**Supersedes:** 2026-08-11T14:42:55-07:00 — only its "entry format is unchanged" clause; the absorbed behaviors stand

@@ -32,7 +32,7 @@ Categories (a descriptive label on each entry): `gate-resolution` (answered an o
 One append-only `##` block in `DECISIONS.md` at the project root. Create the file with an `<!-- AI-maintained, append-only -->` header if absent. **Never edit, reorder, or delete existing entries.**
 
 ```
-## <ISO-8601 timestamp> — <context> — <category>
+## Q<n> — <context> — <category>
 
 **Question:** <the decision point, paraphrased>
 **Options considered:** <opt / opt>
@@ -41,10 +41,10 @@ One append-only `##` block in `DECISIONS.md` at the project root. Create the fil
 **Justification:** <artifact cited by reference — or, for an assumption / tradeoff / deviation, your rationale>
 **Outcome:** applied | assumed | escalated
 **Ref:** <commit / PR / issue / doc, or "(pending)">
-**Supersedes:** <prior timestamp> — <why>   (only on a revision)
+**Supersedes:** <prior Q-number> — <why>   (only on a revision)
 ```
 
-`context` = a task ref (`auth/02`, `#57`) or a session tag (`interactive/<topic>`, `research/<topic>`, `writing/<topic>`).
+`Q<n>` = the entry's sequential number (`Q1`, `Q12`, `Q13`): one more than the previous entry's, counting from the top of the file. `context` = a task ref (`auth/02`, `#57`) or a session tag (`interactive/<topic>`, `research/<topic>`, `writing/<topic>`).
 
 **Dedup / revise / reuse.** Before appending, search the journal for an existing entry with the same `(context, Question)`: same `Chosen` → do nothing (retries don't duplicate); changed `Chosen` → append a new entry with `Supersedes:` (never edit the original). A prior entry for the same question is itself a valid citation — reuse it rather than re-deciding; never bulk-load the journal.
 
@@ -61,7 +61,7 @@ When you hand the work back — end of turn, summary, PR description — list th
 A determinable call — cite the artifact that settled it:
 
 ```
-## 2026-05-22T13:40:00-07:00 — report/q2 — gate-resolution
+## Q12 — report/q2 — gate-resolution
 
 **Question:** Which currency should the revenue figures use?
 **Options considered:** USD (audience convention) / EUR (source data) / both (cluttered tables)
