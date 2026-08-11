@@ -29,6 +29,11 @@ The skill ([`skills/log-decisions/SKILL.md`](skills/log-decisions/SKILL.md)) def
 - **The 2×2** — classify each call as *determinable × reversible*, then **decide** (grounded by an artifact), **assume** (safe default, logged for async review), or **escalate** (stop and ask). A catastrophic floor — data loss, destructive migration, irreversible spend, public-interface breaks — always escalates.
 - **The entry** — one append-only block per decision: Question, Options considered, Chosen, Decided-by, Justification, Outcome, with `Supersedes:` for revisions. Never edited, never reordered.
 
+## Links
+
+- **Discussion** — [Show HN thread](https://news.ycombinator.com/item?id=49264597)
+- **Claude Code plugin** — install with the commands above; submitted to Anthropic's [Plugin Directory](https://code.claude.com/docs/en/discover-plugins) (pending review)
+
 ## Used by
 
 [`swe-workflow`](https://github.com/swe-workflow/swe-workflow) — the idea → PRD → issues → ship suite — orchestrates this skill across every stage: spec-layer grills journal their assumed answers through it, and ship builds stage entries to a per-worktree `DECISIONS.staged.md` promoted at close-out. It was extracted from that repo (≤ v2.0.2) into this standalone one.
