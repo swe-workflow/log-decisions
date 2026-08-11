@@ -1,5 +1,6 @@
 {
   "name": "log-decisions",
+  "description": "Marketplace for the log-decisions plugin — an append-only DECISIONS.md decision journal for AI agents.",
   "owner": { "name": "soulmachine" },
   "plugins": [
     {
