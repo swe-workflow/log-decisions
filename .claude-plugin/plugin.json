@@ -1,7 +1,7 @@
 {
   "name": "log-decisions",
-  "version": "1.0.0",
-  "description": "Append-only DECISIONS.md journal recording the consequential calls a spec didn't settle — what was chosen, by whom, and why, with decide / assume / escalate rules for what an agent may settle alone.",
+  "version": "1.1.0",
+  "description": "Append-only DECISIONS.md journal recording the consequential calls the spec didn't settle — what was chosen, by whom, and why, with decide / assume / escalate rules for what an agent may settle alone.",
   "author": { "name": "soulmachine" },
   "homepage": "https://github.com/swe-workflow/log-decisions",
   "repository": "https://github.com/swe-workflow/log-decisions",

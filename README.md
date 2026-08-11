@@ -1,8 +1,8 @@
 # log-decisions
 
-An append-only `DECISIONS.md` journal recording the consequential calls a spec didn't settle — what was chosen, by whom, and why, with decide / assume / escalate rules for what an agent may settle alone.
+An append-only `DECISIONS.md` journal recording the consequential calls the spec didn't settle — what was chosen, by whom, and why, with decide / assume / escalate rules for what an agent may settle alone.
 
-**General-purpose.** The journal isn't coding-specific: any agent-assisted work — research, writing, ops, data — produces judgment calls someone will later ask *"why was it done this way?"* about. This skill gives those calls one durable, `grep`-able home at the repo root.
+**General-purpose.** The journal isn't coding-specific: any agent-assisted work — research, writing, ops, data — produces judgment calls someone will later ask *"why was it done this way?"* about. This skill gives those calls one durable, `grep`-able home at the project root.
 
 It ships as an **[Agent Skill](https://agentskills.io)** — pure markdown, no scripts — so it runs on **Claude Code, Codex, Gemini CLI, Cursor**, and any other skills-compatible agent.
 
@@ -25,13 +25,15 @@ npx skills add swe-workflow/log-decisions
 
 The skill ([`skills/log-decisions/SKILL.md`](skills/log-decisions/SKILL.md)) defines:
 
-- **The bar** — if the spec already authorized the call it's not journal-worthy; if the agent had to invent the authorization, it is.
-- **The 2×2** — classify each call as *determinable × reversible*, then **decide** (grounded by an artifact), **assume** (safe default, logged for async review), or **escalate** (stop and ask). A catastrophic floor — data loss, destructive migration, irreversible spend, public-interface breaks — always escalates.
-- **The entry** — one append-only block per decision: Question, Options considered, Chosen, Decided-by, Justification, Outcome, with `Supersedes:` for revisions. Never edited, never reordered.
+- **The bar** — if the spec already authorized the call it's not journal-worthy; if the agent had to invent the authorization, it is — put differently, would the person who gave the spec want to know before accepting the work?
+- **The 2×2** — classify each call as *determinable × reversible*, then **decide** (grounded by an artifact), **assume** (safe default, logged for async review), or **escalate** (stop and ask). A catastrophic floor — data loss, irreversible spend, sending or publishing what can't be recalled, breaking something others depend on — always escalates.
+- **The entry** — one append-only block per decision, written at the moment of the call: Question, Options considered, Chosen, Decided-by, Justification, Outcome, with `Supersedes:` for revisions. Never edited, never reordered.
+- **The handoff** — when work is handed back, the `assumed` and `escalated` entries it appended are listed — what to confirm or revise, what's blocked — so the reader gets the review queue without opening the journal.
 
 ## Links
 
 - **Discussion** — [Show HN thread](https://news.ycombinator.com/item?id=49264597)
+- **Inspiration** — [Thariq's implementation-notes prompt](https://x.com/trq212/status/2056418157305454805), whose reader-facing framing, running-notes timing, and confirm-or-revise queue this skill absorbed in 1.1.0
 - **Claude Code plugin** — install with the commands above; submitted to Anthropic's [Plugin Directory](https://code.claude.com/docs/en/discover-plugins) (pending review)
 
 ## Used by
