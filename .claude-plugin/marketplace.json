@@ -1,0 +1,14 @@
+{
+  "name": "log-decisions",
+  "owner": { "name": "soulmachine" },
+  "plugins": [
+    {
+      "name": "log-decisions",
+      "source": "./",
+      "description": "Append-only DECISIONS.md journal recording the consequential calls a spec didn't settle — what was chosen, by whom, and why, with decide / assume / escalate rules for what an agent may settle alone.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": ["decisions", "journal", "autonomy", "afk"]
+    }
+  ]
+}
