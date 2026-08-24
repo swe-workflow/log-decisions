@@ -46,6 +46,24 @@ One append-only `##` block in `DECISIONS.md` at the project root. Create the fil
 
 `Q<n>` = the entry's sequential number (`Q1`, `Q12`, `Q13`): one more than the previous entry's, counting from the top of the file. `context` = a task ref (`auth/02`, `#57`) or a session tag (`interactive/<topic>`, `research/<topic>`, `writing/<topic>`).
 
+**The numbering is an invariant, not just a convention:** every `Q<n>` must equal its own 1-based position among *all* entries in the file — so the sequence is monotonically increasing and continuous, with no gaps, duplicates, or out-of-order entries. "All entries" matters in a journal that predates Q-numbering: a file whose first three entries are timestamps and whose fourth is `## Q4` is correct, not broken, because the count spans both forms. **Read the file to get the next number** — never carry it from memory or an earlier read, since a concurrent session may have appended since.
+
+Verify after appending:
+
+```bash
+awk '/^## / { i++
+        if ($2 ~ /^Q[0-9]+$/) { n = substr($2,2)+0
+          if (n != i) { printf "  line %d: %s is entry #%d — expected Q%d\n", NR, $2, i, i; bad++ } } }
+      END { printf "  %d entries, %d break(s) — %s\n", i, bad+0, (bad?"BROKEN":"OK") }' DECISIONS.md
+```
+
+**Repairing a break.** If the check reports one, renumber the offending entry and every entry after it so the sequence is continuous again. This is the one sanctioned exception to *never edit existing entries* — the numbers are addresses, not content, and a broken sequence makes every later citation ambiguous. Two rules keep the repair safe:
+
+- **Renumber forward only.** Close the gap by pulling later entries down; never write a number that is already in use, even transiently.
+- **Update citations in lockstep.** `Supersedes:` lines — and any prose citing `Q<n>` — address entries *by number*. Renumbering a header without rewriting what points at it silently redirects the citation to a different decision, which is worse than the gap you set out to fix. Search for every mention of each number you move, not just the `##` headers, and remember a `Supersedes:` may cite a timestamp from before the migration.
+
+Leave entry *content* untouched: change only the header number and the citations naming it. When two sessions appended at once, the later entry is the one that moves.
+
 **Dedup / revise / reuse.** Before appending, search the journal for an existing entry with the same `(context, Question)`: same `Chosen` → do nothing (retries don't duplicate); changed `Chosen` → append a new entry with `Supersedes:` (never edit the original). A prior entry for the same question is itself a valid citation — reuse it rather than re-deciding; never bulk-load the journal.
 
 ## At handoff
