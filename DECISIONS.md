@@ -41,3 +41,13 @@
 **Outcome:** applied
 **Ref:** (pending)
 **Supersedes:** 2026-08-11T14:42:55-07:00 — only its "entry format is unchanged" clause; the absorbed behaviors stand
+
+## Q5 — interactive/org-move — irreversible-action
+
+**Question:** The skill is moving to the `OpenSWE` org. Transfer this repository, or publish a fresh copy there and archive this one?
+**Options considered:** `gh` repo transfer / fresh repo in OpenSWE + archive here / leave it at `swe-workflow`
+**Chosen:** Transfer. GitHub keeps the history, stars and issues, and serves a 301 from every `swe-workflow/log-decisions` URL, so existing clones, `npx skills add swe-workflow/log-decisions`, and the Show HN and Plugin Directory links keep resolving. Manifest `homepage`/`repository` and the README install commands were repointed at the new canonical URL and the version bumped to 1.2.1; `LICENSE`'s copyright holder was left as `swe-workflow`, since moving a repository between orgs does not transfer copyright.
+**Decided-by:** human
+**Justification:** A fresh copy would have dropped 4 stars and the issue history and, worse, pointed the *pending* Anthropic Plugin Directory review at an archived repo. The redirect makes the transfer the only option that is externally invisible. The user was told the review was pending against the old URL before approving.
+**Outcome:** applied
+**Ref:** `.claude-plugin/plugin.json`, `README.md`. Sibling move: `soulmachine/skills/herdr-advisor` → `OpenSWE/herdr-advisor`.

@@ -11,13 +11,13 @@ It ships as an **[Agent Skill](https://agentskills.io)** — pure markdown, no s
 ### Universal (any skills-compatible agent)
 
 ```text
-npx skills add swe-workflow/log-decisions
+npx skills add OpenSWE/log-decisions
 ```
 
 ### Claude Code (plugin)
 
 ```text
-/plugin marketplace add swe-workflow/log-decisions
+/plugin marketplace add OpenSWE/log-decisions
 /plugin install log-decisions@log-decisions
 ```
 
